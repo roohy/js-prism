@@ -13,7 +13,8 @@ prism.core = prism.core || {};
 
  prism.core.brick = function(bName) {
      this.scaffold = null;
-     this.name = typeof(baName) !== 'undefined' ? bName : null;
+     //console.log('initializing a brick with name '+bName);
+     this.name = typeof bName !== 'undefined' ? bName : null;
      this.style = null;
  };
 

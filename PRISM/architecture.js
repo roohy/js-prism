@@ -1,4 +1,9 @@
 
+//We do not have interfaces in javascript so there is no IArchitecture or any other iThings :D
+//of course we can add something like an interface mechanism to ensure write function calls. But I do not see any need for
+// that now. so I make this TODO: consider using interface-like mechanism for the 4 classes of architectural elements
+
+
 var prism = prism || {};
 
 prism.core = prism.core || {};
@@ -12,6 +17,7 @@ prism.core = prism.core || {};
  * architecture.
  */
 prism.core.architecture = function(str){
+    //console.log('Architecture is initializing str is '+str);
     prism.core.brick.call(this,str);
     this.bricks = [];
     this.style = prism.core.prismConstants.DEFAULT;
@@ -50,5 +56,50 @@ prism.core.architecture.prototype.handle = function(){};
  * @param b		A brick object to be added
  */
 prism.core.architecture.prototype.add = function(brick){
-    this.bricks.add(brick);
+    this.bricks.push(brick);
 }
+
+/**
+ * This method removes a brick from the architecture and thereby preventing
+ * it from receiving anymore messages from this architecture. If
+ * it is not found to be a part of this architecture then the method
+ * does nothing and returns.
+ * @param b 		A brick object to be removed from the architecture.
+ */
+prism.core.architecture.prototype.remove = function(brick){
+    for(var i = 0 ; i < this.bricks.length ; i++){
+        if(this.bricks[i] == brick){
+            this.bricks.splice(i,1);
+        }
+    }
+}
+
+
+prism.core.architecture.prototype.getBrickByInstanceName = function(instanceName){
+    for( var i = 0 ; i < this.bricks.length ; i++){
+        if ( this.bricks[i].name == instanceName){
+            return this.bricks[i];
+        }
+    }
+};
+
+/**
+ * This is a generic method for connecting two Ports. It is assumed that the two ports have already been
+ * assigned to another parent Brick (component/connector) object.
+ *
+ *@param p1      First Port
+ *@param p2      second Port
+ */
+
+
+//TODO: First imlepment ports then you can implement these to functions
+//TODO: continue implementation from here
+prism.core.architecture.prototype.weld= function(port1 , port2){};
+
+
+/**
+ * This method disconnects two ports.
+ * @param p1 		First Port
+ * @param p2 		Second Port
+ */
+prism.core.architecture.prototype.unweld = function(port1,port2){};
