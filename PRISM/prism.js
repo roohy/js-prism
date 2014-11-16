@@ -11,7 +11,7 @@ prism.core = prism.core || {};
  * either a component, connector, or port. This class does not have a behavior of its own, but depends on sub classes
  * to handle messages.*/
 
- prism.core.brick = new function(bName) {
+ prism.core.brick = function(bName) {
      this.scaffold = null;
      this.name = typeof(baName) !== 'undefined' ? bName : null;
      this.style = null;
