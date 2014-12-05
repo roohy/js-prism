@@ -54,10 +54,11 @@ prism.core.FIFOScheduler = function(inputSize){
 prism.core.FIFOScheduler.prototype.DEFAULT_SIZE = 250;
 
 prism.core.FIFOScheduler.prototype.isQueueFull = function(){
-    return (this.emptySlots == this.size);
+    return (this.emptySlots == 0);
 };
 prism.core.FIFOScheduler.prototype.isQueueEmpty = function(){
-    return (this.emptySlots == 0);
+
+    return (this.emptySlots == this.size);
 };
 
 /**
@@ -68,6 +69,42 @@ prism.core.FIFOScheduler.prototype.isQueueEmpty = function(){
 
 prism.core.FIFOScheduler.prototype.add = function(event){
   try{
-    if(this.isQueueFull()){  }
+    if(this.isQueueFull()){
+        setTimeout(function(){
+           this.add(event);
+        },100);
+        return;
+    }
+  }catch (e){
+      console.log("unexpected error waiting for queue to get empty");
   }
+    this.queue[this.tail] = event;
+    this.incrementTail();
+    this.emptySlots = this.emptySlots -1 ;
+    this.notify
+};
+
+prism.core.FIFOScheduler.prototype.incrementTail = function(){
+    if(this.tail == this.size-1){
+        this.tail = 0;
+    }
+    else
+        ++(this.tail);
+};
+//TODO: we can have a to string function for debugging purposes.
+
+prism.core.FIFOScheduler.prototype.incrementHead = function(){
+    if(this.head == this.size-1){
+        this.head = 0;
+    }
+    else
+        ++(this.head);
+
+    /**
+     * Set the capacity of messages that can be stored before being dispatched
+     * @param n		int the required capacity of the message store
+     */
+
+prism.core.FIFOScheduler.prototype.setEventCapacity=function(n){
+
 };

@@ -18,7 +18,8 @@ prism.core.scaffold = function(){
 };
 prism.core.scaffold.prototype.call = function(command, param){
   if(command == 'add' && dispatcher != null){
-      //TODO: complete this
+      //TODO: complete
+      this.scheduler.add(param);
   }
 };
 
