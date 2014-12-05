@@ -105,3 +105,17 @@ prism.core.port.prototype.getExtensiblePort = function(){
 prism.core.port.prototype.setExtensiblePort = function(exPort){
     this.extPort = exPort;
 };
+
+
+/**
+ * is extensible function which return false. unless it is an extensible one. so we can
+ * find out it being extensible
+ */
+
+prism.core.port.prototype.isExtensible = function(){
+    return false;
+};
+
+prism.core.port.prototype.isPort = function(){
+    return true;
+};
