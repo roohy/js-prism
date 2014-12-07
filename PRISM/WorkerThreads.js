@@ -45,3 +45,17 @@ prism.core.workerThread.prototype.theFunction = function(){
     }
     setTimeout(this.run.bind(this),this.timeStep);
 };
+
+prism.core.Threading = {};
+prism.core.Threading.theQ = [];
+
+prism.core.Threading.addToWaitingList = function(func,obj){
+    prism.core.theQ.push([func,obj]);
+};
+
+prism.core.Threading.notifyAll = function(){
+    for(var i = 0 ; i<prism.core.Threading.theQ.length ; i++){
+        setTimeout(prism.core.Threading.theQ[i][0].bind(prism.core.Threading.theQ[i][1]),10);
+    }
+    return;
+}

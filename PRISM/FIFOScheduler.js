@@ -70,9 +70,10 @@ prism.core.FIFOScheduler.prototype.isQueueEmpty = function(){
 prism.core.FIFOScheduler.prototype.add = function(event){
   try{
     if(this.isQueueFull()){
-        setTimeout(function(){
+        /*setTimeout(function(){
            this.add(event);
-        },100);
+        }.bind(this),100);*/
+        prism.core.Threading.addToWaitingList(this.add,this);
         return;
     }
   }catch (e){
@@ -81,8 +82,17 @@ prism.core.FIFOScheduler.prototype.add = function(event){
     this.queue[this.tail] = event;
     this.incrementTail();
     this.emptySlots = this.emptySlots -1 ;
+    prism.core.Threading.notifyAll();
     //TODO:this class is not complete
 };
+
+//make it(them) synchronized later
+prism.core.FIFOScheduler.prototype.getEvent = function(){
+    var ev = null;
+    try{
+        
+    }
+}
 
 prism.core.FIFOScheduler.prototype.incrementTail = function(){
     if(this.tail == this.size-1){
