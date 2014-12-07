@@ -81,7 +81,7 @@ prism.core.FIFOScheduler.prototype.add = function(event){
     this.queue[this.tail] = event;
     this.incrementTail();
     this.emptySlots = this.emptySlots -1 ;
-    this.notify
+    //TODO:this class is not complete
 };
 
 prism.core.FIFOScheduler.prototype.incrementTail = function(){
@@ -93,8 +93,8 @@ prism.core.FIFOScheduler.prototype.incrementTail = function(){
 };
 //TODO: we can have a to string function for debugging purposes.
 
-prism.core.FIFOScheduler.prototype.incrementHead = function(){
-    if(this.head == this.size-1){
+prism.core.FIFOScheduler.prototype.incrementHead = function() {
+    if (this.head == this.size - 1) {
         this.head = 0;
     }
     else
@@ -102,9 +102,10 @@ prism.core.FIFOScheduler.prototype.incrementHead = function(){
 
     /**
      * Set the capacity of messages that can be stored before being dispatched
-     * @param n		int the required capacity of the message store
+     * @param n        int the required capacity of the message store
      */
+};
 
 prism.core.FIFOScheduler.prototype.setEventCapacity=function(n){
-
+    return;
 };
