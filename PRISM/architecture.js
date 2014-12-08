@@ -35,9 +35,9 @@ prism.core.architecture.prototype.constructor = prism.core.architecture;
 
 prism.core.architecture.prototype.start = function(){
   for ( var i  = 0 ; i< this.bricks.length ; i++){
-      console.log("Staring the bricks of the arch we have"+ this.bricks.length+ " things to start");
+      //console.log("Staring the bricks of the arch we have"+ this.bricks.length+ " things to start");
         try {
-            console.log("haha starting : "+ this.bricks[i]);
+            //console.log("haha starting : "+ this.bricks[i]);
             this.bricks[i].start();
 
         }catch(e){
