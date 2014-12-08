@@ -12,7 +12,7 @@ prism.core.event = function(str, issuer,rc){
     this.name = typeof str !== 'undefined' ? str : null;
     this.originatingBrick = typeof issuer !== 'undefined' ? issuer : null;
     this.handlingBrick = typeof rc !== 'undefined' ? rc : null;
-    this.parameter
+
 
     /**
      * Brick that created this event

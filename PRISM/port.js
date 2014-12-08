@@ -29,6 +29,9 @@ prism.core.port = function(str,type){
 };
 
 
+prism.core.port.prototype = Object.create(prism.core.brick.prototype);
+prism.core.port.prototype.constructor = prism.core.port;
+
 /**
  * Simple place holder method. Doesn't do anything.
  */

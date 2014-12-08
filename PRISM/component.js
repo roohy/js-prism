@@ -21,8 +21,11 @@ prism.core.component = function(name , pImplementation){
     prism.core.brick.call(name);
     this.ports = [];
     this.implementation = typeof pImplementation !== 'undefined' ? pImplementation : null;
-    //TODO: set assisiated component here after implementing the absImplementation
+    this.implementation.setAssociatedComponent(this);
 };
+
+prism.core.component.prototype = Object.create(prism.core.brick.prototype);
+prism.core.component.prototype.constructor = prism.core.component;
 
 prism.core.component.prototype.start = function(){
     if(this.implementation != null)

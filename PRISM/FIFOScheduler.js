@@ -45,6 +45,8 @@ prism.core.FIFOScheduler = function(inputSize){
 }; // end of constructor function
 
 
+prism.core.FIFOScheduler.prototype = Object.create(prism.core.scheduler.prototype);
+prism.core.FIFOScheduler.prototype.constructor = prism.core.FIFOScheduler;
 
 
 

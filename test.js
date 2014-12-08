@@ -6,16 +6,24 @@
 Server = function(){
     prism.core.abstractImplementation.call(this);
 
+
 };
+Server.prototype = Object.create(prism.core.abstractImplementation.prototype);
+Server.prototype.constructor = Server;
 
 Client = function(){
     prism.core.abstractImplementation.call(this);
 };
+Client.prototype = Object.create(prism.core.abstractImplementation.prototype);
+Client.prototype.constructor = Client;
+
+
 Client.prototype.sendMessage=function(){
     console.log("it is not about prism. It is about sending a message >:)")
     var event = new prism.core.event("Message");
     event.addParameter("Value","harharrr");
     event.eventType = prism.core.prismConstants.REQUEST;
+    alert(this.eventType);
     this.send(event);
 };
 
@@ -48,7 +56,7 @@ var clientBehavoir = new Client();
 var clientComp = new prism.core.component("Client",clientBehavoir);
 clientComp.scaffold = scf;
 
-
+console.log("calling to add components to arch"+ clientComp);
 arch.add(clientComp);
 arch.add(serverComp);
 

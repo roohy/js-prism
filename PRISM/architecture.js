@@ -24,6 +24,9 @@ prism.core.architecture = function(str){
 };
 
 
+prism.core.architecture.prototype = Object.create(prism.core.brick.prototype);
+prism.core.architecture.prototype.constructor = prism.core.architecture;
+
 /**
  * This method must be called to start the architecture.
  *  This method will in turn call the <code>start()</code>
@@ -60,7 +63,7 @@ prism.core.architecture.prototype.handle = function(){};
  * @param b		A brick object to be added
  */
 prism.core.architecture.prototype.add = function(brick){
-    console.log("adding a brick to the arch"+ brick);
+    console.log("adding a brick to the arch"+ brick.name);
     this.bricks.push(brick);
     console.log("now we have "+ this.bricks.length);
 }

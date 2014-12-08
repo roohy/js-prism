@@ -24,6 +24,8 @@ prism.core.connector = function(name,pStyle){
 };
 
 
+prism.core.connector.prototype = Object.create(prism.core.brick.prototype);
+prism.core.connector.prototype.constructor = prism.core.connector;
 
 /**
  * This method distributes the incoming event to connected Bricks. Distribution
