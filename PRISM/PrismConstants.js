@@ -35,3 +35,15 @@ prism.core.prismConstants.PUB_SUB_ARCH = 132;
 prism.core.prismConstants.P2P_COMP = 140;
 prism.core.prismConstants.P2P_ARCH = 141;
 
+
+prism.core.prismConstants.Reflector = function(obj) {
+    this.getProperties = function() {
+        var properties = [];
+        for (var prop in obj) {
+            if (typeof obj[prop] == 'function') {
+                properties.push(prop);
+            }
+        }
+        return properties;
+    };
+}

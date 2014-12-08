@@ -32,10 +32,14 @@ prism.core.architecture = function(str){
 
 prism.core.architecture.prototype.start = function(){
   for ( var i  = 0 ; i< this.bricks.length ; i++){
+      console.log("Staring the bricks of the arch we have"+ this.bricks.length+ " things to start");
         try {
+            console.log("haha starting : "+ this.bricks[i]);
             this.bricks[i].start();
+
         }catch(e){
-            console.log("error at starting bricks of the architecture");
+            console.log("error at starting bricks of the architecture "+ e);
+
         }
 
     }
@@ -56,7 +60,9 @@ prism.core.architecture.prototype.handle = function(){};
  * @param b		A brick object to be added
  */
 prism.core.architecture.prototype.add = function(brick){
+    console.log("adding a brick to the arch"+ brick);
     this.bricks.push(brick);
+    console.log("now we have "+ this.bricks.length);
 }
 
 /**
