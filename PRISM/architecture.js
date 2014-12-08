@@ -92,9 +92,14 @@ prism.core.architecture.prototype.getBrickByInstanceName = function(instanceName
  */
 
 
-//TODO: First imlepment ports then you can implement these to functions
+//TODO: First imlepment ports then you can implement these two functions
 //TODO: continue implementation from here
-prism.core.architecture.prototype.weld= function(port1 , port2){};
+//TODO: implemented these two but some other functions are still needed
+prism.core.architecture.prototype.weld= function(port1 , port2){
+    port1.setMutualPort(port2);
+    port2.setMutualPort(port1);
+
+};
 
 
 /**
@@ -102,4 +107,7 @@ prism.core.architecture.prototype.weld= function(port1 , port2){};
  * @param p1 		First Port
  * @param p2 		Second Port
  */
-prism.core.architecture.prototype.unweld = function(port1,port2){};
+prism.core.architecture.prototype.unweld = function(port1,port2){
+    port1.setMutualPort(null);
+    port2.setMutualPort(null);
+};
