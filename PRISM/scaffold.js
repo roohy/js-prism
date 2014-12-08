@@ -17,7 +17,7 @@ prism.core.scaffold = function(){
     this.dispatcher = null;
 };
 prism.core.scaffold.prototype.call = function(command, param){
-  if(command == 'add' && dispatcher != null){
+  if(command == 'add' && this.dispatcher != null){
       //TODO: complete
       this.scheduler.add(param);
   }

@@ -9,20 +9,20 @@ prism.core = prism.core || {};
  * AbstractScheduler defines an abstract class for performing architectural level scheduling of events. This basically comes down to the ordering
  * policy of events in the queue.
  */
-prism.core.abstractScheduler = function(){};
+prism.core.scheduler = function(){};
 
 /**
  * Add a message to the list in an arbitrary order.
  * @param e		Event object to be added to the list
  */
-prism.core.abstractScheduler.prototype.add = function(e){};
+prism.core.scheduler.prototype.add = function(e){};
 
 
 /**
  * Get the number of messages waiting to be dispatched.
  * @return int		Number of waiting messages
  */
-prism.core.abstractScheduler.prototype.getWaitingLength = function(){};
+prism.core.scheduler.prototype.getWaitingLength = function(){};
 
 
 /**
@@ -30,7 +30,7 @@ prism.core.abstractScheduler.prototype.getWaitingLength = function(){};
  * class implementing this interface
  * @return Event		the event object for dispatched event
  */
-prism.core.abstractScheduler.prototype.getEvent = function(){};
+prism.core.scheduler.prototype.getEvent = function(){};
 
 
 /**
@@ -38,4 +38,4 @@ prism.core.abstractScheduler.prototype.getEvent = function(){};
  * @param n		int the required capacity of the message store
  */
 
-prism.core.abstractScheduler.prototype.setEventCapacity = function(n){};
+prism.core.scheduler.prototype.setEventCapacity = function(n){};

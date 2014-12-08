@@ -13,6 +13,7 @@ prism.core.abstractImplementation = function(){
 
 prism.core.abstractImplementation.prototype.send = function(event){
     if(this.associatedComp != null){
+        console.log("event in abstra",event);
         this.associatedComp.send(event);
     }
 };

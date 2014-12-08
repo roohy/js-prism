@@ -13,7 +13,7 @@ prism.core = prism.core || {};
 prism.core.FIFOScheduler = function(inputSize){
 
     //inherits from abstract scheduler. next line does this for us.
-    prism.core.abstractScheduler.call(this);
+    prism.core.scheduler.call(this);
 
 
     /**

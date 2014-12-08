@@ -63,9 +63,9 @@ prism.core.architecture.prototype.handle = function(){};
  * @param b		A brick object to be added
  */
 prism.core.architecture.prototype.add = function(brick){
-    console.log("adding a brick to the arch"+ brick.name);
+    //console.log("adding a brick to the arch", brick);
     this.bricks.push(brick);
-    console.log("now we have "+ this.bricks.length);
+    //console.log("now we have ",);
 }
 
 /**

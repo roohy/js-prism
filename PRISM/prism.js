@@ -39,8 +39,8 @@ prism.core.brick.prototype.add = function(event){
     if(event.originatingBrick == null){
         event.originatingBrick = this;
     }
-    if(scaffold != null){
-        scaffold.call('add',event);
+    if(this.scaffold != null){
+        this.scaffold.call('add',event);
     }
 };
 

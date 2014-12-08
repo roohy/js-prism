@@ -92,4 +92,5 @@ prism.core.event.prototype.replicate = function(){
     newEvent.parameters = this.parameters; //TODO: ask neno or jae about this
     newEvent.originatingBrick = this.originatingBrick;
     newEvent.eventType = this.eventType;
+    return newEvent;
 };

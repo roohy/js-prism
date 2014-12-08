@@ -19,7 +19,7 @@ prism.core.workerThread = function(name, dispatcher,events){
 };
 prism.core.workerThread.prototype.run = function(){
     if(this.keepWorking){
-        setTimeout(this.theFunction.bind(this),1);
+        setTimeout(this.theFunction.bind(this),300);
     }
     return;
 };
