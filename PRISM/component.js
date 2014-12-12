@@ -86,7 +86,6 @@ prism.core.component.prototype.handle = function(event){
  * @param port    Port to be added.
  */
 prism.core.component.prototype.addCompPort= function(port){
-
     port.setParentBrick(this);
     this.ports.push(port);
 };

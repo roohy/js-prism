@@ -70,14 +70,16 @@ prism.core.FIFOScheduler.prototype.isQueueEmpty = function(){
  */
 
 prism.core.FIFOScheduler.prototype.add = function(event){
+    //console.log("ading " , event);
   try{
     if(this.isQueueFull()){
         /*setTimeout(function(){
            this.add(event);
         }.bind(this),100);*/
-        //prism.core.Threading.addToWaitingList(this.add,this);
+        prism.core.Threading.addToWaitingList(this.add,this);
         //We have to busy wait, I will try to fix it using code changes to the upper levels
-        prism.core.Threading.sleep(500);
+
+        //prism.core.Threading.sleep(500);
 
     }
   }catch (e){
@@ -95,10 +97,13 @@ prism.core.FIFOScheduler.prototype.getEvent = function(){
     var ev = null;
     try{
         if(this.isQueueEmpty()){
-            console.log("it is empty nothing to get, so wait");
+            console.log(" queue is empty, nothing to get, so wait");
             //prism.core.Threading.addToWaitingList(this.getEvent(),this);
             //same as above. this should return the upper level function should do something
-            prism.core.Threading.sleep(500);
+            //prism.core.Threading.sleep(500);
+            return null;
+
+
         }
     }catch(e){
         console.log("unexpected error waiting for queue to get something to do!!!");
@@ -107,7 +112,7 @@ prism.core.FIFOScheduler.prototype.getEvent = function(){
     this.queue[this.head] = null;
     this.incrementHead();
     this.emptySlots = this.emptySlots + 1;
-    //prism.core.Threading.notifyAll();
+    prism.core.Threading.notifyAll();
     return ev;
 };
 
