@@ -101,7 +101,7 @@ prism.core.TiSocketPort.prototype.handle=function(event){
     data = JSON.stringify(data);
     Ti.Stream.write(this.connection,Ti.createBuffer({
         value: data
-    }),);
+    }),this.writeCallBack);
 };
 prism.core.TiSocketPort.prototype.writeCallBack = function(e){
     console.log("wrote something on remote port ", e);
