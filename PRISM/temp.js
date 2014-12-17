@@ -90,8 +90,8 @@ serverComp.addCompPort(serverReplyPort);*/
 var serverReplyPort = new prism.core.NodeRemotePort("Server Request Port",prism.core.prismConstants.REPLY);
 serverComp.addCompPort(serverReplyPort);
 
-clientRequestPort.setConfigs('127.0.0.1',6969);
-serverReplyPort.setConfigs('127.0.0.1',6969);
+clientRequestPort.setConfigs('207.151.58.61',6969);
+serverReplyPort.setConfigs('0.0.0.0',6969);
 clientRequestPort.start();
 serverReplyPort.start();
 //arch.weld(serverReplyPort,clientRequestPort);
