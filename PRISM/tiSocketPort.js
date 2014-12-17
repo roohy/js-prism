@@ -1,6 +1,5 @@
 //This will implement remote port for using in titanium :D
 
-var net = require('net');
 
 
 var prism = prism || {};
