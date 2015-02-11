@@ -37,7 +37,7 @@ prism.core.workerThread.prototype.theFunction = function(){
             e = null;
         }
         else{
-            console.log("Shoot, Null Message in a Worker Thread");
+            //console.log("Shoot, Null Message in a Worker Thread");
         }
     }
     catch(e){

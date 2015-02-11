@@ -10,6 +10,7 @@ prism.core.NodeRemotePort = function(str,type){
     this.PORT = null;
 
     this.connection = null;
+    this.connectionList = [];//TODO: write code to manage this list properly
 };
 
 prism.core.NodeRemotePort.prototype = Object.create(prism.core.port.prototype);
@@ -37,11 +38,12 @@ prism.core.NodeRemotePort.prototype.start = function(){
 prism.core.NodeRemotePort.prototype.startListning = function(){
     this.connection = net.createServer();
     console.log("starting the connection");
-    this.connection.listen(this.PORT,this.HOST);
+    this.connection.listen(this.PORT);
     console.log("connection made",this.connection.address());
     //console.log("Now listening on "+this.connection.address().address +":"+this.connection.address().port);
     this.connection.on("connection",function(sock){
         console.log("CONNECTED TO:"+sock.remoteAddress+":"+sock.remotePort);
+        this.connectionList.push(sock);
         sock.on("data",function(data){
             console.log("Message received on extensible port");
             this.receive(String(data));
@@ -53,13 +55,15 @@ prism.core.NodeRemotePort.prototype.startListning = function(){
 };
 
 prism.core.NodeRemotePort.prototype.startClient = function(){
-    this.connection = new net.Socket();
-    this.connection.connect(this.PORT,this.HOST,function(){
-        console.log("CONNECTED TO REMOTE HOST");
-    });
-    this.connection.on('data',function(){
+
+    this.connection = net.connect({port:this.PORT,host: this.HOST},
+        function(){
+            console.log("CONNECTED TO REMOTE HOST");
+        });
+    this.connection.on('data',function(data){
         console.log("DATA RECEIVED FROM REMOTE PORT");
-    });
+        this.receive(data);
+    }.bind(this));
 };
 
 prism.core.NodeRemotePort.prototype.handle=function(event){
@@ -71,7 +75,14 @@ prism.core.NodeRemotePort.prototype.handle=function(event){
             data:event.parameters,
             eventType: event.eventType};
     data = JSON.stringify(data);
-    this.connection.write(data);
+    if(this.portType == prism.core.prismConstants.REPLY){
+        for( var i = 0 ; i < this.connectionList.length ; i++){
+            this.connectionList[i].write(data);
+        }
+    }
+    else{
+        this.connection.write(data);
+    }
 };
 
 prism.core.NodeRemotePort.prototype.receive = function(data){

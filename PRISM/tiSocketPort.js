@@ -55,7 +55,7 @@ prism.core.TiSocketPort.prototype.startListning = function(){
 };
 
 
-prism.core.TiSocketPort.prototype.readCallBack = function(){
+prism.core.TiSocketPort.prototype.readCallBack = function(e){
     if(e.bytesProcessed == -1){
         console.log("reading null buffer on client");
         return;
@@ -73,7 +73,7 @@ prism.core.TiSocketPort.prototype.readCallBack = function(){
             this.getParentBrick().add(event);
         }
     }
-    catch(e){
+    catch(error){
         console.log("Problem loading ");
     }
 };
@@ -87,6 +87,7 @@ prism.core.TiSocketPort.prototype.startClient = function(){
 
     });
     this.connection.connect();
+    console.log("connecting");
     //Ti.Stream.pump()
 };
 

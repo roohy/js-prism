@@ -60,20 +60,20 @@ prism.core.architecture.prototype.handle = function(){};
 /**
  * This method will add a brick instance <code>b</code> to the architecture.
  *
- * @param b		A brick object to be added
+ * @param brick		A brick object to be added
  */
 prism.core.architecture.prototype.add = function(brick){
     //console.log("adding a brick to the arch", brick);
     this.bricks.push(brick);
     //console.log("now we have ",);
-}
+};
 
 /**
  * This method removes a brick from the architecture and thereby preventing
  * it from receiving anymore messages from this architecture. If
  * it is not found to be a part of this architecture then the method
  * does nothing and returns.
- * @param b 		A brick object to be removed from the architecture.
+ * @param brick 		A brick object to be removed from the architecture.
  */
 prism.core.architecture.prototype.remove = function(brick){
     for(var i = 0 ; i < this.bricks.length ; i++){
@@ -81,7 +81,7 @@ prism.core.architecture.prototype.remove = function(brick){
             this.bricks.splice(i,1);
         }
     }
-}
+};
 
 
 prism.core.architecture.prototype.getBrickByInstanceName = function(instanceName){
@@ -96,8 +96,8 @@ prism.core.architecture.prototype.getBrickByInstanceName = function(instanceName
  * This is a generic method for connecting two Ports. It is assumed that the two ports have already been
  * assigned to another parent Brick (component/connector) object.
  *
- *@param p1      First Port
- *@param p2      second Port
+ *@param port1      First Port
+ *@param port2      second Port
  */
 
 
@@ -113,8 +113,8 @@ prism.core.architecture.prototype.weld= function(port1 , port2){
 
 /**
  * This method disconnects two ports.
- * @param p1 		First Port
- * @param p2 		Second Port
+ * @param port1 		First Port
+ * @param port2 		Second Port
  */
 prism.core.architecture.prototype.unweld = function(port1,port2){
     port1.setMutualPort(null);

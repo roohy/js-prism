@@ -46,9 +46,17 @@ Client.prototype.sendMessage=function(){
     //console.log("event in sendMessage",event);
     this.send(event);
 };
+Client.prototype.handle = function(event){
+    console.log('I am handling it on client side, ', event.getParameter('Value'));
+}
 
 Server.prototype.handle = function(event){
     console.log("On server Side, we have got a message",event.getParameter('Value'));
+    var event2 = new prism.core.event("Message");
+    event2.addParameter("Value", "We are good here");
+    event2.eventType = prism.core.prismConstants.REPLY;
+    this.send(event2);
+
 }
 /*
  console.log('Hi, First Test for Prism... ');
@@ -90,8 +98,8 @@ serverComp.addCompPort(serverReplyPort);*/
 var serverReplyPort = new prism.core.NodeRemotePort("Server Request Port",prism.core.prismConstants.REPLY);
 serverComp.addCompPort(serverReplyPort);
 
-clientRequestPort.setConfigs('207.151.58.61',6969);
-serverReplyPort.setConfigs('0.0.0.0',6969);
+clientRequestPort.setConfigs('162.243.153.54',7878);
+serverReplyPort.setConfigs('0.0.0.0',7878);
 clientRequestPort.start();
 serverReplyPort.start();
 //arch.weld(serverReplyPort,clientRequestPort);

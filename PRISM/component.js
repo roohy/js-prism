@@ -15,13 +15,17 @@
  * This constructor calls on the <code>Brick(String)</code> constructor.
  *
  * @param name	String: the name of this component object.
+ * @param pImplementation abstractImplementation class associated with the new component
  */
 
 prism.core.component = function(name , pImplementation){
     prism.core.brick.call(name);
     this.ports = [];
     this.implementation = typeof pImplementation !== 'undefined' ? pImplementation : null;
-    this.implementation.setAssociatedComponent(this);
+    if ( this.implementation != null)
+        this.implementation.setAssociatedComponent(this);
+    else
+        console.log("Remember to set your abstract implementation later in the code");
 };
 
 prism.core.component.prototype = Object.create(prism.core.brick.prototype);
@@ -45,7 +49,7 @@ prism.core.component.prototype.getImplementation = function(){
  * This method sends the event up/down the Prism architecture that this component is a
  * part of.
  *
- * @param e		a Event to be sent to the Brick above/below.
+ * @param event		a Event to be sent to the Brick above/below.
  */
 prism.core.component.prototype.send = function(event){
     event.originatingBrick = this;
@@ -72,13 +76,13 @@ prism.core.component.prototype.send = function(event){
 /**
  * Handling of Event. This is application specific code and should be implemented by subclasses of this class.
  *
- * @param e	Event to be handled
+ * @param event	Event to be handled
  */
 prism.core.component.prototype.handle = function(event){
     if(this.implementation != null){
         this.implementation.handle(event);
     }
-}
+};
 
 
 /**
@@ -102,13 +106,9 @@ prism.core.component.prototype.removeCompPort = function(port){
             this.ports.splice(i);
         }
     }
-}
+};
 
 
-/**
- * Removes a port from this component.
- *@param port    Port to be removed.
- */
 
 prism.core.component.prototype.getCompPorts = function(){
     return this.port;
