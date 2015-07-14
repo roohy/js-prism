@@ -54,3 +54,5 @@ prism.core.brick.prototype.add = function(event){
  */
 
 prism.core.brick.prototype.handle = function(event){};
+
+//module.exports = prism;
