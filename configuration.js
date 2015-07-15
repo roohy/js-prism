@@ -13,7 +13,7 @@ PRISM_PROJECT.threadCount = 2;
 //Define Scheduler Here
 PRISM_PROJECT.scheduler = prism.core.FIFOScheduler;
 PRISM_PROJECT.maxSize = 100;
-PRISM_PROJECT.name = "The Architecture Name"
+PRISM_PROJECT.name = "The Architecture Name";
 
 
 
