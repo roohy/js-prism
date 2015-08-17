@@ -26,8 +26,8 @@ eval(fs.readFileSync('PRISM/FIFOScheduler.js')+'');
 eval(fs.readFileSync('PRISM/connector.js')+'');
 
 //add component implementations here
-eval(fs.readFileSync('component/client.js')+'');
-eval(fs.readFileSync('component/server.js')+'');
+//eval(fs.readFileSync('component/client.js')+'');
+//eval(fs.readFileSync('component/server.js')+'');
 
 
 

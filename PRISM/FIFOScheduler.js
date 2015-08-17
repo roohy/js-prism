@@ -25,7 +25,6 @@ prism.core.FIFOScheduler = function(inputSize){
      */
     this.size = typeof(inputSize) !== 'undefined' ? inputSize : this.DEFAULT_SIZE;
 
-    this.queue = [];
     /**
      * Keep track of the number of empty slots in the queue
      */
@@ -33,7 +32,7 @@ prism.core.FIFOScheduler = function(inputSize){
     /**
      * The location of the head of the FIFO
      */
-    this.head = 0
+    this.head = 0;
     /**
      * The location of the tail of the FIFO
      */
@@ -80,16 +79,18 @@ prism.core.FIFOScheduler.prototype.add = function(event){
         //We have to busy wait, I will try to fix it using code changes to the upper levels
 
         //prism.core.Threading.sleep(500);
-
+        return;
     }
   }catch (e){
       console.log("unexpected error waiting for queue to get empty");
   }
-    this.queue[this.tail] = event;
-    this.incrementTail();
+    this.queue.push(event);
+    //this.queue[this.tail] = event;
+    //this.incrementTail();
     this.emptySlots = this.emptySlots -1 ;
     //prism.core.Threading.notifyAll();
     //TODO:this class is not complete
+    this.dispatcher.notify();
 };
 
 //make it(them) synchronized later
@@ -108,13 +109,15 @@ prism.core.FIFOScheduler.prototype.getEvent = function(){
     }catch(e){
         console.log("unexpected error waiting for queue to get something to do!!!");
     }
-    ev = this.queue[this.head];
-    this.queue[this.head] = null;
-    this.incrementHead();
+    ev = this.queue.splice(0,1);
+    //ev = this.queue[this.head];
+    //this.queue[this.head] = null;
+    //this.incrementHead();
     this.emptySlots = this.emptySlots + 1;
-    prism.core.Threading.notifyAll();
+    //prism.core.Threading.notifyAll();
     return ev;
 };
+
 
 prism.core.FIFOScheduler.prototype.incrementTail = function(){
     if(this.tail == this.size-1){

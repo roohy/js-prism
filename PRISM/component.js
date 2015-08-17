@@ -19,7 +19,7 @@
  */
 
 prism.core.component = function(name , pImplementation){
-    prism.core.brick.call(name);
+    prism.core.brick.call(this,name);
     this.ports = [];
     this.implementation = typeof pImplementation !== 'undefined' ? pImplementation : null;
     if ( this.implementation != null)

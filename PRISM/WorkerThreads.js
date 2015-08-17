@@ -47,12 +47,12 @@ prism.core.workerThread.prototype.theFunction = function(){
 };
 
 //This busy waiter helps us keep the control of the program in times that we have no event to process
-prism.core.nonBusy = false;
+prism.core.currentThreadCount = 1;
 prism.core.busyWaiter = function(){
-    if(prism.core.nonBusy){
+    if(prism.core.currentThreadCount == 0){
         setTimeout(prism.core.busyWaiter,1000);
     }
-}
+};
 
 
 prism.core.Threading = {};

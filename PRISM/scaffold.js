@@ -21,6 +21,9 @@ prism.core.scaffold.prototype.call = function(command, param){
       //TODO: complete
       this.scheduler.add(param);
   }
+    if(command == 'submitcontext' && this.dispatcher != null){
+        this.scheduler.submitContext(param);
+    }
 };
 
 //TODO: complete this shit :D later after adding othere dependencies
