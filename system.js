@@ -36,13 +36,25 @@ eval(fs.readFileSync('concom.js')+'');
 for ( var i = 0 ; i < PRISM_PROJECT.implementations.length ; i++){
     eval(fs.readFileSync(PRISM_PROJECT.implementations[i])+'');
 }
+PRISM_PROJECT.addPort =  function (req,rep){
+
+    var requestOne = new prism.core.port(req+" Port",prism.core.prismConstants.REQUEST)
+    var replyOne = new prism.core.port(rep+" Port",prism.core.prismConstants.REPLY)
+    PRISM_PROJECT.components[req].addCompPort(requestOne);
+    PRISM_PROJECT.components[rep].addCompPort(replyOne);
+    PRISM_PROJECT.arch.weld(replyOne,requestOne);
+};
+PRISM_PROJECT.addComponent = function(){
+
+};
 function addPorts(){
     PRISM_PROJECT.ports.forEach(function(val, index, array){
-        var requestOne = new prism.core.port(val[0]+" Port",prism.core.prismConstants.REQUEST)
+        PRISM_PROJECT.addPort(val[0],val[1]);
+        /*var requestOne = new prism.core.port(val[0]+" Port",prism.core.prismConstants.REQUEST)
         var replyOne = new prism.core.port(val[1]+" Port",prism.core.prismConstants.REPLY)
         PRISM_PROJECT.components[val[0]].addCompPort(requestOne);
         PRISM_PROJECT.components[val[1]].addCompPort(replyOne);
-        PRISM_PROJECT.arch.weld(replyOne,requestOne);
+        PRISM_PROJECT.arch.weld(replyOne,requestOne);*/
 
     });
 }
@@ -83,7 +95,7 @@ process.argv.forEach(function(val, index, array){
             //RUN Command
            START();
            console.log("Running the start commands");
-           PRISM_PROJECT.components['client1'].getImplementation().sendMessage();
+           eval(fs.readFileSync('start.js'));
        }
    }
 });

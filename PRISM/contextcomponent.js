@@ -18,6 +18,6 @@ prism.context.component.prototype = Object.create(prism.core.component.prototype
 prism.context.component.prototype.constructor = prism.context.component;
 
 prism.context.component.prototype.submit =function(message){
-    this.scaffold
+    //this.scaffold
 };
 

@@ -8,7 +8,7 @@ prism.core = prism.core || {};
  * Event represents the basic message that is used by Bricks to communicate.
  *  */
 
-prism.core.event = function(str, issuer,rc){
+prism.core.event = function(str, issuer,rc, type){
     this.name = typeof str !== 'undefined' ? str : null;
     this.originatingBrick = typeof issuer !== 'undefined' ? issuer : null;
     this.handlingBrick = typeof rc !== 'undefined' ? rc : null;
@@ -29,7 +29,7 @@ prism.core.event = function(str, issuer,rc){
     /**
      * Event type. Could be a request or reply.
      */
-    this.eventType = null;
+    this.eventType =typeof type !== 'undefined' ? type : null;
 
     //name-value pairs
     this.parameters = {};
