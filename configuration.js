@@ -15,5 +15,7 @@ PRISM_PROJECT.scheduler = prism.core.FIFOScheduler;
 PRISM_PROJECT.maxSize = 100;
 PRISM_PROJECT.name = "The Architecture Name";
 
+//add abstract implementation files
+PRISM_PROJECT.implementations = ['./component/server.js','./component/client.js'];
 
 

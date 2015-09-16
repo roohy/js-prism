@@ -26,4 +26,4 @@ prism.core.scaffold.prototype.call = function(command, param){
     }
 };
 
-//TODO: complete this shit :D later after adding othere dependencies
+//TODO: complete this :D later after adding othere dependencies

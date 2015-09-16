@@ -42,7 +42,8 @@ prism.core.roundRobinDispatcher.prototype.notify = function(){
 
         try{
             var e = this.scheduler.getEvent();
-            if(e != null){
+            console.log(" this is e, ", e.handlingBrick);
+            if(e != null && e !== 'undefined'){
                 console.log("handling a message in dispatch");
                 e.handlingBrick.handle(e);
                 if(e.name == 'Terminate'){

@@ -50,7 +50,7 @@ prism.core.workerThread.prototype.theFunction = function(){
 prism.core.currentThreadCount = 1;
 prism.core.busyWaiter = function(){
     if(prism.core.currentThreadCount == 0){
-        setTimeout(prism.core.busyWaiter,1000);
+        setTimeout(prism.core.busyWaiter,100);
     }
 };
 

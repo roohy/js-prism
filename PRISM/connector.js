@@ -12,8 +12,7 @@ prism.core = prism.core || {};
  * The connector is connected to a set of components on both sides (a set may be empty).
  * Connectors use the provided AbstractHandler to distribute event among connected Bricks.
  *
- *@version 2.0
- *@author USC Soft. Arch. Group. Contact: Sam Malek <A HREF="mailto:malek@usc.edu"> malek@usc.edu </A>
+
  */
 
 prism.core.connector = function(name,pStyle){
@@ -56,7 +55,7 @@ prism.core.connector.prototype.handle = function(event){
  * @param port    Port to be added.
  */
 
-prism.core.connector.prototype.addConnPort = function(port){
+prism.core.connector.prototype.addCompPort = function(port){
   port.setParentBrick(this);
     this.ports.push(port);
 };
@@ -67,7 +66,7 @@ prism.core.connector.prototype.addConnPort = function(port){
  *@param port    Port to be removed.
  */
 
-prism.core.connector.prototype.removeConPort = function(port){
+prism.core.connector.prototype.removeCompPort = function(port){
     for ( var i = 0 ; i < this.ports.length; i++){
         if(this.ports[i] == port)
             this.ports.splice(i);
@@ -81,6 +80,6 @@ prism.core.connector.prototype.removeConPort = function(port){
  *@return DynamicArray   List of available ports
  */
 
-prism.core.connector.prototype.getConnPorts = function(){
+prism.core.connector.prototype.getCompPorts = function(){
     return (this.ports);//TODO: what is this error!!!!
 }

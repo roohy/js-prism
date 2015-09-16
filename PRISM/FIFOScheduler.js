@@ -90,7 +90,7 @@ prism.core.FIFOScheduler.prototype.add = function(event){
     this.emptySlots = this.emptySlots -1 ;
     //prism.core.Threading.notifyAll();
     //TODO:this class is not complete
-    this.dispatcher.notify();
+    setTimeout(this.dispatcher.notify(),1);
 };
 
 //make it(them) synchronized later
@@ -98,7 +98,7 @@ prism.core.FIFOScheduler.prototype.getEvent = function(){
     var ev = null;
     try{
         if(this.isQueueEmpty()){
-            //console.log(" queue is empty, nothing to get, so wait");
+            console.log(" queue is empty, nothing to get, so wait");
             //prism.core.Threading.addToWaitingList(this.getEvent(),this);
             //same as above. this should return the upper level function should do something
             //prism.core.Threading.sleep(500);
