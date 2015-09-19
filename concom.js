@@ -13,7 +13,7 @@ PRISM_PROJECT.components = {
 };
 PRISM_PROJECT.connectors = ['mainConnector'];
 PRISM_PROJECT.ports= [
-    ['client1','server1']//,
-    //['mainConnector','server1']
+    ['client1','mainConnector'],
+    ['mainConnector','server1']
 ];
 

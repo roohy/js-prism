@@ -10,3 +10,6 @@ prism.context.FIFOScheduler = function(inputSize, contextInputSize){
 prism.context.FIFOScheduler.prototype = Object.create(prism.core.FIFOScheduler);
 prism.context.FIFOScheduler.prototype.constructor = prism.context.FIFOScheduler;
 
+prism.context.FIFOScheduler.prototype.submitContext = function(message){
+
+};

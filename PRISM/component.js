@@ -57,6 +57,7 @@ prism.core.component.prototype.send = function(event){
         var thisPort = this.ports[i];
         if(thisPort.getPortType() == event.eventType){
             if(thisPort.isExtensible()){
+                console.log("Extensible Port");
                 var e2 = event.replicate();
                 e2.handlingBrick = thisPort;
                 this.add(e2);

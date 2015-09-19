@@ -115,7 +115,7 @@ prism.core.FIFOScheduler.prototype.getEvent = function(){
     //this.incrementHead();
     this.emptySlots = this.emptySlots + 1;
     //prism.core.Threading.notifyAll();
-    return ev;
+    return ev[0];
 };
 
 
